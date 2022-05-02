@@ -1,9 +1,12 @@
 # EXECUTING WITH VENV PYTHON
 # !./venv/bin/python
-import readchar, os, requests, datetime
-import mysql.connector
-import sys
 import random as rn
+import sys
+import datetime
+import mysql.connector
+import os
+import readchar
+import requests
 
 mySQLdb = mysql.connector.connect(
     host="localhost",
@@ -19,35 +22,36 @@ print(dbs)
 
 # PERSON CLASS
 class Persons:
-    def __init__(self, name, gender, DOB):
-        self.DOB = DOB
+    def __init__(self, name, gender, dob):
+        self.dob = dob
         self.name = name
-        self.age = age
         self.gender = gender
 
-    def getName():
+    def getname(self):
         return self.name
 
 
 # INHERITING PERSON CLASS FOR EMPLOYEES
 class Employee:
-    def __init__(self, name, gender, DOB, emp_id):
-        super().__init__(name, age, gender)
+    def __init__(self, name, gender, dob, emp_id):
+        self.emp_id = emp_id
+        super().__init__(name, dob, gender)
 
 
 # RANDOM WORDS FOR DOMAIN SEARCH
 class RandomWord:
-    def __init__(self, nosVowels):
+    def __init__(self, noVowel=None):
         vowels = ['a', 'e', 'i', 'o', 'u']
         consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'v', 'w',
                       'x', 'y', 'z']
-        str = ''
-        nosVowels = int(nosVowels)
-        for l in range(0, nosVowels):
-            str += rn.choice(consonants)
-            str += rn.choice(vowels)
-        print(str)
+        randomWord = ''
+        noVowel = int(noVowel)
+        for count in range(0, noVowel):
+            randomWord += rn.choice(consonants)
+            randomWord += rn.choice(vowels)
+        print(randomWord)
         return
+
 
 # CLEAR CONSOLE FN
 
@@ -80,13 +84,13 @@ while (True):
 
     print("OPTIONS: [xx-quit] [rw-random word]")
     print("Enter Key ..")
-    first_stroke = readchar.readchar()
+    firstStroke = readchar.readchar()
     clearConsole()
-    second_stroke = readchar.readchar()
+    secondStroke = readchar.readchar()
     clearConsole()
-    if first_stroke == 'x':
-        if second_stroke == 'x':
+    if firstStroke == 'x':
+        if secondStroke == 'x':
             break
-    elif first_stroke == 'r':
-        if second_stroke == 'w':
-            RandomWord(3)
+    elif firstStroke == 'r':
+        if secondStroke == 'w':
+            RandomWord()
